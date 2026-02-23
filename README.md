@@ -4,17 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>恰口科研 - 永續農法訂購系統</title>
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="theme-color" content="#2E7D32">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-green: #2E7D32; /* 深綠-專業 */
-            --secondary-green: #81C784; /* 草綠-永續 */
-            --eco-beige: #F9FBF7; /* 淺米-環保基底 */
+            --primary-green: #2E7D32;
+            --secondary-green: #81C784;
+            --eco-beige: #F9FBF7;
             --text-dark: #37474F;
-            --accent-orange: #FF8F00; /* 強調色 */
+            --accent-orange: #FF8F00;
         }
         body {
             font-family: 'Noto Sans TC', sans-serif;
@@ -48,10 +45,8 @@
         /* 產品卡片 */
         .product-card {
             background: #fff; border: 1px solid #edf2ed; border-radius: 15px;
-            padding: 15px; margin-bottom: 15px; transition: 0.3s;
+            padding: 15px; margin-bottom: 15px;
         }
-        .product-card:hover { border-color: var(--secondary-green); box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
-        .product-info { margin-bottom: 10px; }
         .product-name { font-weight: bold; font-size: 1.1rem; color: #1b5e20; }
         .product-tag { font-size: 0.8rem; background: #e8f5e9; color: #2e7d32; padding: 2px 8px; border-radius: 4px; margin-left: 5px; }
         
@@ -59,38 +54,39 @@
         td { padding: 10px 5px; border-bottom: 1px dotted #eee; }
         .qty-input {
             width: 60px; padding: 8px; border-radius: 12px; border: 2px solid #eee;
-            text-align: center; font-size: 1rem; outline: none; transition: 0.3s;
+            text-align: center; font-size: 1rem; outline: none;
         }
-        .qty-input:focus { border-color: var(--secondary-green); background: #f1f8e9; }
 
         /* 表單樣式 */
         .form-group { margin-bottom: 15px; }
         .form-group label { display: block; margin-bottom: 6px; font-weight: bold; font-size: 0.9rem; }
         .form-group input, .form-group textarea {
             width: 100%; padding: 12px; border: 2px solid #eee; border-radius: 12px;
-            box-sizing: border-box; font-size: 1rem; font-family: inherit;
+            box-sizing: border-box; font-size: 1rem;
         }
-        .form-group input:focus { border-color: var(--secondary-green); outline: none; }
 
-        /* 結帳區 */
+        /* 結帳與運費提示區 */
         .summary-box {
             background: #f1f8e9; border-radius: 15px; padding: 20px; margin-top: 30px;
+            border: 1px solid #dcedc8;
+        }
+        .shipping-policy {
+            background: #ffffff; color: var(--primary-green);
+            padding: 10px; border-radius: 10px; border-left: 4px solid var(--accent-orange);
+            font-size: 0.9rem; font-weight: bold; margin-bottom: 15px;
         }
         .summary-line { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 0.95rem; }
         .total-line { 
             display: flex; justify-content: space-between; margin-top: 15px; padding-top: 15px;
             border-top: 2px solid #dcedc8; font-size: 1.3rem; font-weight: bold; color: var(--accent-orange);
         }
-        .shipping-note { font-size: 0.8rem; color: #689f38; margin-top: 5px; text-align: right; }
 
         .btn-submit {
             width: 100%; padding: 18px; border: none; border-radius: 15px;
             background: linear-gradient(to right, #2e7d32, #43a047);
             color: white; font-size: 1.2rem; font-weight: bold; cursor: pointer;
             margin-top: 20px; box-shadow: 0 6px 20px rgba(46, 125, 50, 0.2);
-            transition: 0.3s;
         }
-        .btn-submit:active { transform: translateY(2px); box-shadow: none; }
 
         #loader {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
@@ -113,10 +109,7 @@
         <div class="section-title">選擇產品</div>
 
         <div class="product-card">
-            <div class="product-info">
-                <span class="product-name">碳晶讚</span>
-                <span class="product-tag">需冷藏</span>
-            </div>
+            <div class="product-info"><span class="product-name">碳晶讚</span><span class="product-tag">需冷藏</span></div>
             <table>
                 <tr><td>1 公升裝 ($1,000)</td><td align="right"><input type="number" min="0" value="0" class="qty" data-name="碳晶讚 1L" data-price="1000" data-vol="1"></td></tr>
                 <tr><td>4 公升裝 ($3,800)</td><td align="right"><input type="number" min="0" value="0" class="qty" data-name="碳晶讚 4L" data-price="3800" data-vol="4"></td></tr>
@@ -141,31 +134,18 @@
         </div>
 
         <div class="section-title">收件人資訊</div>
-        <div class="form-group">
-            <label>姓名 *</label>
-            <input type="text" id="name" placeholder="請輸入姓名">
-        </div>
-        <div class="form-group">
-            <label>聯絡電話 *</label>
-            <input type="tel" id="phone" placeholder="例如: 0912345678">
-        </div>
-        <div class="form-group">
-            <label>配送地址 *</label>
-            <input type="text" id="address" placeholder="請輸入收件地址">
-        </div>
-        <div class="form-group">
-            <label>種植作物 *</label>
-            <input type="text" id="crop" placeholder="請填寫目前種植的作物(如:芒果、草莓)">
-        </div>
-        <div class="form-group">
-            <label>備註</label>
-            <textarea id="note" rows="2" placeholder="如有其他特殊需求請告知"></textarea>
-        </div>
+        <div class="form-group"><label>姓名 *</label><input type="text" id="name" placeholder="收件人姓名"></div>
+        <div class="form-group"><label>聯絡電話 *</label><input type="tel" id="phone" placeholder="電話號碼"></div>
+        <div class="form-group"><label>配送地址 *</label><input type="text" id="address" placeholder="完整收件地址"></div>
+        <div class="form-group"><label>種植作物 *</label><input type="text" id="crop" placeholder="例如：鳳梨、芒果、草莓"></div>
+        <div class="form-group"><label>備註</label><textarea id="note" rows="2" placeholder="如有其他需求請說明"></textarea></div>
 
         <div class="summary-box">
+            <div class="shipping-policy">
+                💡 備註：運費 200 元，滿 20 公升以上免運
+            </div>
             <div class="summary-line"><span>總公升數</span><span id="display-vol">0 L</span></div>
             <div class="summary-line"><span>運費</span><span id="display-ship">$0</span></div>
-            <div class="shipping-note">※ 滿 20 公升免運，未滿酌收 200 元</div>
             <div class="total-line"><span>總計</span><span id="display-total">$0</span></div>
         </div>
 
@@ -173,10 +153,10 @@
     </div>
 </div>
 
-<div id="loader"><div class="spinner"></div><p>訂單傳送中，請稍候...</p></div>
+<div id="loader"><div class="spinner"></div><p>訂單傳送中...</p></div>
 
 <script>
-    // 請將下方的 URL 替換為您部署 Apps Script 產生的 /exec 網址
+    // 請將下方的 URL 替換為您的 Apps Script 網址
     const scriptURL = 'https://script.google.com/macros/s/AKfycbzCr2KTpmmjDI9y0kGHDhRphQY2I1tN1wfsZGEkRBfBuo-Pu72Nd0MnN84prIq0pqJn/exec';
 
     function calculate() {
@@ -190,6 +170,7 @@
             }
         });
 
+        // 運費邏輯：滿 20L 免運
         let ship = (totalVol > 0 && totalVol < 20) ? 200 : 0;
         let finalTotal = totalVal + ship;
 
@@ -210,7 +191,7 @@
         const crop = document.getElementById('crop').value;
 
         if (order.finalTotal === 0 || !name || !phone || !address || !crop) {
-            alert('請填寫完整訂購數量及收件人資訊(含作物名稱)！');
+            alert('請選擇商品並填寫完整資訊(含作物名稱)！');
             return;
         }
 
@@ -218,31 +199,20 @@
 
         const data = {
             "訂購時間": new Date().toLocaleString('zh-TW'),
-            "姓名": name,
-            "電話": phone,
-            "地址": address,
-            "種植作物": crop,
-            "訂購明細": order.items,
-            "總公升數": order.totalVol,
-            "運費": order.ship,
-            "總金額": order.finalTotal,
+            "姓名": name, "電話": phone, "地址": address, "種植作物": crop,
+            "訂購明細": order.items, "總公升數": order.totalVol, "運費": order.ship, "總金額": order.finalTotal,
             "備註": document.getElementById('note').value
         };
 
         try {
-            await fetch(scriptURL, {
-                method: 'POST',
-                mode: 'no-cors',
-                body: JSON.stringify(data)
-            });
-            alert('訂單已成功送出！恰口科研將盡快連繫您。');
+            await fetch(scriptURL, { method: 'POST', mode: 'no-cors', body: JSON.stringify(data) });
+            alert('訂單已成功送出！');
             location.reload();
         } catch (e) {
-            alert('傳送發生錯誤，請檢查網址或連繫客服。');
+            alert('送出失敗，請檢查網址設定。');
             document.getElementById('loader').style.display = 'none';
         }
     }
 </script>
-
 </body>
 </html>
