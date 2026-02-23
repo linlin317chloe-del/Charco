@@ -481,10 +481,10 @@
         document.getElementById('submit-btn').disabled = true;
 
         // --- 【重要】請將下方的 URL 替換成您自己的 Google Apps Script 網址 ---
-        const scriptURL = 'YOUR_GOOGLE_SCRIPT_URL_HERE'; 
+        const scriptURL = 'Y[OUR_GOOGLE_SCRIPT_URL_HER](https://script.google.com/macros/s/AKfycby9jyTwR4MW2K01SVgdQkp0krzCDKFrw-pOApvhd9jNyikUOn8Cnrris3pNrNykL0T6/exec)E'; 
         // -----------------------------------------------------------------
 
-        if (scriptURL === 'YOUR_GOOGLE_SCRIPT_URL_HERE') {
+        if (scriptURL === '[YOUR_GOOGLE_SCRIPT_URL_HERE](https://script.google.com/macros/s/AKfycby9jyTwR4MW2K01SVgdQkp0krzCDKFrw-pOApvhd9jNyikUOn8Cnrris3pNrNykL0T6/exec)') {
             alert("請先設定 Google Apps Script 網址 (詳見說明文件)");
             loadingOverlay.style.display = 'none';
             document.getElementById('submit-btn').disabled = false;
