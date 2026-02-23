@@ -100,7 +100,7 @@
 <div id="loading">傳送中...</div>
 
 <script>
-    const scriptURL = '請在這裡貼上您的Google腳本網址'; 
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbySej_JoObOD2c6i1J8UpVQE-AnJ7ULPX_4Q2m0CAxSW8ELFSCj3PUJS-gQNndkXWA/exec'; 
 
     function update() {
         let subtotal = 0, vol = 0, items = [];
