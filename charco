@@ -176,7 +176,7 @@
 
 <script>
     // 請務必更新下方的 Apps Script URL
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbzCr2KTpmmjDI9y0kGHDhRphQY2I1tN1wfsZGEkRBfBuo-Pu72Nd0MnN84prIq0pqJn/exec';
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbyuAwHuitVq6smkzEDGezgS_FCnJ_SrpOtSya_1Gbo9jeAvY0e8Bogb0WmD6_m7Hmzy/exec';
 
     function calculate() {
         let totalVal = 0, totalVol = 0, items = [];
