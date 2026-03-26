@@ -154,7 +154,7 @@
 
         <div class="section-title">收件資訊</div>
         <div class="form-group"><label>收件姓名 *</label><input type="text" id="name" placeholder="請填寫姓名"></div>
-          <div class="form-group"><label>LINE名稱*</label><input type="text" id="name" placeholder="請填寫LINE名稱"></div>
+        <div class="form-group"><label>LINE名稱*</label><input type="text" id="line_name" placeholder="請填寫LINE名稱"></div>
         <div class="form-group"><label>聯絡電話 *</label><input type="tel" id="phone" placeholder="填寫手機或市話"></div>
         <div class="form-group"><label>配送地址 *</label><input type="text" id="address" placeholder="完整收件地址"></div>
         <div class="form-group"><label>種植作物 *</label><input type="text" id="crop" placeholder="填寫目前種植作物 (如：鳳梨、芒果)"></div>
